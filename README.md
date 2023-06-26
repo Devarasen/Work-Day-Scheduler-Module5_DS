@@ -27,12 +27,16 @@ Once entered, hit the button with the floppy disk image to save your plans to th
 
 To clear plans, delete your plan description from before to emply and click the save button again.
 
+Screenshots below will show a brief description of the functionality of this web page.
 
-![HomePage]()
 
-![Saved Prompt]()
+![HomePage](./assets/HomePage.PNG)
 
-![Saved Prompt]()
+![Enter Plan](./assets/Enter%20Plan.PNG)
+
+![Saved Alert](./assets/Saved%20Alert.PNG)
+
+
 
 ## Credits
 
