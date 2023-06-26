@@ -21,7 +21,11 @@ Repo URL: https://devarasen.github.io/Work-Day-Scheduler-Module5_DS/
 
 ## Usage
 
+Multiple time blocks are provided to enter a description of your daily plans.
 
+Once entered, hit the button with the floppy disk image to save your plans to the local storage. You will get a prompt once this is performed.
+
+To clear plans, delete your plan description from before to emply and click the save button again.
 
 
 ![HomePage]()
