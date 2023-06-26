@@ -17,7 +17,7 @@ Future - Green
 
 Deployed URL: https://github.com/Devarasen/Work-Day-Scheduler-Module5_DS
 
-Repo URL: 
+Repo URL: https://devarasen.github.io/Work-Day-Scheduler-Module5_DS/
 
 ## Usage
 

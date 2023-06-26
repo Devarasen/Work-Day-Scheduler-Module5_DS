@@ -2,7 +2,9 @@
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
 $(function () {   
-  currentDayEl = $("#currentDay");
+  var currentDayEl = $("#currentDay");
+  var saveButton = $(".saveBtn");
+  var timeBlockEl = $(".time-block");
   
 
   // TODO: Add a listener for click events on the save button. This code should
@@ -11,47 +13,89 @@ $(function () {
   // function? How can DOM traversal be used to get the "hour-x" id of the
   // time-block containing the button that was clicked? How might the id be
   // useful when saving the description in local storage?
+  saveButton.on("click", savePlan)
 
 
-  // TODO: Add code to apply the past, present, or future class to each time
-  // block by comparing the id to the current hour. 
-    function updateBlockClass() {
-      var currentHour = dayjs().format("H");
-      var currentHourInt = parseInt(currentHour);
-      console.log(currentHour);
+  function savePlan() {
+    var timeBlockId = $(this).parent().attr("id");
 
-      $(".time-block").each(function () {
-        var timeBlock = parseInt($(this).attr("id").split("-")[1]);
-        if (timeBlock < currentHourInt) {
-          $(this).addClass("past").removeClass("present future");
-        } else if (timeBlock === currentHourInt) {
-          $(this).addClass("present").removeClass("past future");
-        } else {
-          $(this).addClass("future").removeClass("past present");
-        }
-      });
+    var descriptionId = $(this).siblings(".description").val();
+
+    var plan = {
+      timeBlockId: timeBlockId,
+      description: descriptionId
+    }
+
+    var existingPlans = JSON.parse(localStorage.getItem("plans")) || [];
+
+    var index = existingPlans.findIndex(function (plan) {
+      return plan.timeBlockId === timeBlockId;
+    });
+
+    if (index !== -1) {
+      existingPlans[index].description = descriptionId;
+    } else {      
+      existingPlans.push(plan);
     }
   
+    localStorage.setItem("plans", JSON.stringify(existingPlans));
+
+    alert("Schedule Updated");
+  }
+
+
   // TODO: Add code to get any user input that was saved in localStorage and set
   // the values of the corresponding textarea elements. HINT: How can the id
   // attribute of each time-block be used to do this?
 
+  function retrieveSavedPlans() {
+    var existingPlans = JSON.parse(localStorage.getItem("plans")) || [];
+  
+    existingPlans.forEach(function (plan) {
+      $("#" + plan.timeBlockId).find(".description").val(plan.description);
+    });
+  }
+
+
+  // TODO: Add code to apply the past, present, or future class to each time
+  // block by comparing the id to the current hour. 
+  function updateBlockClass() {
+    var currentHour = dayjs().format("H");
+    var currentHourInt = parseInt(currentHour);
+    console.log(currentHour);
+
+    timeBlockEl.each(function () {
+      var timeBlock = parseInt($(this).attr("id").split("-")[1]);
+      if (timeBlock < currentHourInt) {
+        $(this).addClass("past").removeClass("present future");
+      } else if (timeBlock === currentHourInt) {
+        $(this).addClass("present").removeClass("past future");
+      } else {
+        $(this).addClass("future").removeClass("past present");
+      }
+    });
+  }
+  
 
   // TODO: Add code to display the current date in the header of the page.
   function displayDate() {
-    var currentDay = dayjs().format("dddd, MMM DD[th] mm:ss");
+    var currentDay = dayjs().format("dddd, MMM DD[th]");
     currentDayEl.text(currentDay);
   }
 
+
+  //init functions for responsiveness
   function init() {
     displayDate();
     updateBlockClass();
+    retrieveSavedPlans();
   }
 
   init ();
 
-  setInterval(displayDate, 1000);
+  setInterval(displayDate, 60000);
   setInterval(updateBlockClass, 60000);
+  setInterval(retrieveSavedPlans, 60000);
 });
 
 
