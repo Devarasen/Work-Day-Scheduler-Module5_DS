@@ -26,7 +26,6 @@ $(function () {
 var currentDayEl = $("#currentDay");
 
 function displayDate() {
-
     currentDayEl.text(dayjs().format("dddd, MMM DD[th]"));
 }
 
