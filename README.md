@@ -30,11 +30,18 @@ To clear plans, delete your plan description from before to emply and click the 
 Screenshots below will show a brief description of the functionality of this web page.
 
 
+
+
+
 ![HomePage](./assets/HomePage.PNG)
 
 
 
+
+
 ![Enter Plan](./assets/Enter%20Plan.PNG)
+
+
 
 
 
