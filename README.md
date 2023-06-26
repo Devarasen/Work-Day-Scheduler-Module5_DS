@@ -32,20 +32,6 @@ Screenshots below will show a brief description of the functionality of this web
 ![HomePage](./assets/HomePage.PNG)
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ![Enter Plan](./assets/Enter%20Plan.PNG)
 
 
