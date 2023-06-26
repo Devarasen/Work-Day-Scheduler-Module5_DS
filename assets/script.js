@@ -37,7 +37,7 @@ $(function () {
   
     localStorage.setItem("plans", JSON.stringify(existingPlans));
 
-    alert("Schedule Updated");
+    alert("Schedule updated and logged into local storage");
   }
 
 
