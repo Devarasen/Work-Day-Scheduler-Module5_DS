@@ -25,9 +25,9 @@ $(function () {
 
 var currentDayEl = $("#currentDay");
 
-function displayTime() {
+function displayDate() {
 
     currentDayEl.text(dayjs().format("dddd, MMM DD[th]"));
 }
 
-setInterval(displayTime, 1000);
+setInterval(displayDate, 1000);
