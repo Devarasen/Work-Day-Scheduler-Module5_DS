@@ -30,3 +30,8 @@ function displayDate() {
 }
 
 setInterval(displayDate, 1000);
+
+function init() {
+  displayDate();
+}
+init ();
